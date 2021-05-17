@@ -33,7 +33,7 @@ FirebaseAuth fAuth;
         mPassword = findViewById(R.id.Password);
         mPhone = findViewById(R.id.Phone);
         mRegisterBtn = findViewById(R.id.Login);
-        mLoginBtn = findViewById(R.id.createText);
+        mLoginBtn = findViewById(R.id.forgotPassword);
         fAuth = FirebaseAuth.getInstance();
 
         if(fAuth.getCurrentUser() != null){
