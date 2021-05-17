@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "688924405097",
+    "project_id": "restaurantorder-aa874",
+    "storage_bucket": "restaurantorder-aa874.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688924405097:android:37580cc3d2f2cab18ba1f8",
+        "android_client_info": {
+          "package_name": "com.example.restaurantorder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688924405097-crs4j2hock9gph2o4pbm0q0sbve0o41q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmVHnIa2IvFmjfFXyiW72UhihTrBdgq6Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688924405097-crs4j2hock9gph2o4pbm0q0sbve0o41q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
