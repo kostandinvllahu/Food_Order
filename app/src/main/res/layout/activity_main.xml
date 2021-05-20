@@ -299,6 +299,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Order"
+        android:onClick="order"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
@@ -411,7 +412,7 @@
         app:srcCompat="@drawable/foto2" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -420,20 +421,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.344" />
-
-    <EditText
-        android:id="@+id/editTextNumberDecimal2"
-        android:layout_width="57dp"
-        android:layout_height="37dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.776"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.338" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
