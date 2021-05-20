@@ -69,8 +69,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="263dp"
-        android:layout_height="46dp"
+        android:layout_width="352dp"
+        android:layout_height="34dp"
         android:fontFamily="sans-serif-medium"
         android:text="GRANDMAS KITCHEN"
         android:textColor="#FFC107"
