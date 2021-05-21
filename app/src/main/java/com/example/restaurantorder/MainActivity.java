@@ -18,7 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 
 public class MainActivity extends AppCompatActivity {
-TextView fullName, email, phone, select, select2, select3, select4, select5, food1, food2, food3, food4, food5;
+TextView fullName, email, phone;
+TextView select, select2, select3, select4, select5, food1, food2, food3, food4, food5;
 Button btnClear, btnOrder;
 FirebaseAuth fAuth;
 FirebaseFirestore fStore;
@@ -39,11 +40,11 @@ String userId;
         select3 = findViewById(R.id.selectcb3);
         select4 = findViewById(R.id.selectcb4);
         select5 = findViewById(R.id.selectcb5);
-        food1 = findViewById(R.id.profileEmail2);
-        food2 = findViewById(R.id.profileEmail7);
-        food3 = findViewById(R.id.profileEmail8);
-        food4 = findViewById(R.id.profileEmail9);
-        food5 = findViewById(R.id.profileEmail10);
+        food1 = findViewById(R.id.item1);
+        food2 = findViewById(R.id.item2);
+        food3 = findViewById(R.id.item3);
+        food4 = findViewById(R.id.item4);
+        food5 = findViewById(R.id.item5);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
@@ -58,9 +59,9 @@ String userId;
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                phone.setText(documentSnapshot.getString("phone"));
+               /* phone.setText(documentSnapshot.getString("phone"));
                 fullName.setText(documentSnapshot.getString("fName"));
-                email.setText(documentSnapshot.getString("email"));
+                email.setText(documentSnapshot.getString("email"));*/
             }
         });
 
@@ -69,14 +70,19 @@ String userId;
             public void onClick(View view) {
               if(cb1.isChecked())
                   cb1.setChecked(false);
+              select.setText("");
              if(cb2.isChecked())
                   cb2.setChecked(false);
+                select2.setText("");
               if(cb3.isChecked())
                   cb3.setChecked(false);
+                select3.setText("");
               if(cb4.isChecked())
                   cb4.setChecked(false);
+                select4.setText("");
               if(cb5.isChecked())
                   cb5.setChecked(false);
+                select5.setText("");
 
               
             }
@@ -97,7 +103,6 @@ String userId;
                   select5.append(food5.getText().toString());
           }
       });
-
     }
     public void logout(View view){
         FirebaseAuth.getInstance().signOut();
@@ -106,7 +111,7 @@ String userId;
     }
 
     public void order(View view){
-        //startActivity(new Intent(getApplicationContext(),Order.class));
+        startActivity(new Intent(getApplicationContext(),Order.class));
         finish();
     }
 }
