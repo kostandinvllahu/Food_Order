@@ -18,8 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 
 public class MainActivity extends AppCompatActivity {
-TextView fullName, email, phone;
-Button btnClear;
+TextView fullName, email, phone, select;
+Button btnClear, btnOrder;
 FirebaseAuth fAuth;
 FirebaseFirestore fStore;
 String userId;
@@ -34,11 +34,13 @@ String userId;
         phone = findViewById(R.id.profilePhone);
         fullName = findViewById(R.id.profileName);
         email = findViewById(R.id.profileEmail);
+        select = findViewById(R.id.selectcb1);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
         btnClear = (Button)findViewById(R.id.Clear);
+        btnOrder = (Button)findViewById(R.id.Order);
         CheckBox cb1 = (CheckBox)findViewById(R.id.checkBox1);
         CheckBox cb2 = (CheckBox)findViewById(R.id.checkBox2);
         CheckBox cb3 = (CheckBox)findViewById(R.id.checkBox3);
@@ -72,6 +74,14 @@ String userId;
             }
         });
 
+      btnOrder.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              if(cb1.isChecked())
+                  select.append("Hello");
+          }
+      });
+
     }
     public void logout(View view){
         FirebaseAuth.getInstance().signOut();
@@ -80,7 +90,7 @@ String userId;
     }
 
     public void order(View view){
-        startActivity(new Intent(getApplicationContext(),Order.class));
+        //startActivity(new Intent(getApplicationContext(),Order.class));
         finish();
     }
 }
