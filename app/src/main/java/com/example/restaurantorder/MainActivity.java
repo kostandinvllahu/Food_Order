@@ -18,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 
 public class MainActivity extends AppCompatActivity {
-TextView fullName, email, phone, select;
+TextView fullName, email, phone, select, select2, select3, select4, select5, food1, food2, food3, food4, food5;
 Button btnClear, btnOrder;
 FirebaseAuth fAuth;
 FirebaseFirestore fStore;
@@ -35,7 +35,15 @@ String userId;
         fullName = findViewById(R.id.profileName);
         email = findViewById(R.id.profileEmail);
         select = findViewById(R.id.selectcb1);
-
+        select2 = findViewById(R.id.selectcb2);
+        select3 = findViewById(R.id.selectcb3);
+        select4 = findViewById(R.id.selectcb4);
+        select5 = findViewById(R.id.selectcb5);
+        food1 = findViewById(R.id.profileEmail2);
+        food2 = findViewById(R.id.profileEmail7);
+        food3 = findViewById(R.id.profileEmail8);
+        food4 = findViewById(R.id.profileEmail9);
+        food5 = findViewById(R.id.profileEmail10);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
@@ -78,7 +86,15 @@ String userId;
           @Override
           public void onClick(View view) {
               if(cb1.isChecked())
-                  select.append("Hello");
+                  select.append(food1.getText().toString());
+              if(cb2.isChecked())
+                  select2.append(food2.getText().toString());
+              if(cb3.isChecked())
+                  select3.append(food3.getText().toString());
+              if(cb4.isChecked())
+                  select4.append(food4.getText().toString());
+              if(cb5.isChecked())
+                  select5.append(food5.getText().toString());
           }
       });
 
