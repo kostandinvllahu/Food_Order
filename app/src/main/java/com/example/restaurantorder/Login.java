@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ public class Login extends AppCompatActivity {
    Button mLoginButton;
    TextView mCreateBtn, forgotTextLink;
    FirebaseAuth fAuth;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class Login extends AppCompatActivity {
         mLoginButton = findViewById(R.id.Login);
         mCreateBtn = findViewById(R.id.createText);
         forgotTextLink = findViewById(R.id.forgotPassword);
+        progressBar = findViewById(R.id.progressBar);
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +62,7 @@ public class Login extends AppCompatActivity {
                     mPassword.setError("Password Must be >= 6 Characters");
                     return;
                 }
+                progressBar.setVisibility(View.VISIBLE);
 
                 fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override

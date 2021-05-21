@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ TextView mLoginBtn;
 FirebaseAuth fAuth;
 FirebaseFirestore fStore;
 String userID;
+ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ String userID;
         mLoginBtn = findViewById(R.id.forgotPassword);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+        progressBar = findViewById(R.id.progressBar2);
         if(fAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
             finish();
@@ -74,6 +77,7 @@ String userID;
                     mPassword.setError("Password Must Be >= 6 Characters");
                     return;
                 }
+                progressBar.setVisibility(View.VISIBLE);
 
                 fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
