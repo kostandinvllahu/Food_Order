@@ -19,7 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class MainActivity extends AppCompatActivity {
 TextView fullName, email, phone;
-TextView select, select2, select3, select4, select5, food1, food2, food3, food4, food5;
+TextView select, select2, select3, select4, select5, food1, food2, food3, food4, food5, total;
 Button btnClear, btnOrder, btnSelect1, btnSelect2, btnSelect3, btnSelect4, btnSelect5;
 FirebaseAuth fAuth;
 FirebaseFirestore fStore;
@@ -35,7 +35,8 @@ String userId;
        // phone = findViewById(R.id.profilePhone);
         //fullName = findViewById(R.id.profileName);
         //email = findViewById(R.id.profileEmail);
-        select = findViewById(R.id.selectcb1);
+        total = findViewById(R.id.selectcb1);
+        select = findViewById(R.id.selectcb);
         select2 = findViewById(R.id.selectcb2);
         select3 = findViewById(R.id.selectcb3);
         select4 = findViewById(R.id.selectcb4);
@@ -90,6 +91,7 @@ String userId;
               if(cb5.isChecked())
                   cb5.setChecked(false);
                 select5.setText("");
+                total.setText("");
 
               
             }
@@ -107,7 +109,7 @@ String userId;
           @Override
           public void onClick(View view) {
               if(cb2.isChecked())
-                  select.append(food2.getText().toString());
+                  select2.append(food2.getText().toString());
           }
       });
 
@@ -115,7 +117,7 @@ String userId;
           @Override
           public void onClick(View view) {
               if(cb3.isChecked())
-                  select.append(food3.getText().toString());
+                  select3.append(food3.getText().toString());
           }
       });
 
@@ -123,7 +125,7 @@ String userId;
           @Override
           public void onClick(View view) {
               if(cb4.isChecked())
-                  select.append(food4.getText().toString());
+                  select4.append(food4.getText().toString());
           }
       });
 
@@ -131,13 +133,13 @@ String userId;
           @Override
           public void onClick(View view) {
               if(cb5.isChecked())
-                  select.append(food5.getText().toString());
+                  select5.append(food5.getText().toString());
           }
       });
       btnOrder.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-             //REGJISTRO TE DHENAT E SELECT
+            total.append(select.getText().toString() +  select2.getText().toString() + select3.getText().toString() + select4.getText().toString() + select5.getText().toString());
           }
       });
     }
