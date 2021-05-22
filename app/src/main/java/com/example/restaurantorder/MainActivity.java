@@ -23,7 +23,8 @@ TextView select, select2, select3, select4, select5, food1, food2, food3, food4,
 Button btnClear, btnOrder, btnSelect1, btnSelect2, btnSelect3, btnSelect4, btnSelect5;
 FirebaseAuth fAuth;
 FirebaseFirestore fStore;
-String userId;
+String userId, e;
+int a, b, c;
 
     @Override
 
@@ -129,6 +130,7 @@ String userId;
                   select.append(food1.getText().toString());
                   number1.setVisibility(View.VISIBLE);
                   p1.setText("300");
+                  number1.setText("1");
 
               }else{
                   number1.setVisibility(View.INVISIBLE);
@@ -147,6 +149,7 @@ String userId;
                   select2.append(food2.getText().toString());
                   number2.setVisibility(View.VISIBLE);
                   p2.setText("500");
+                  number2.setText("1");
               }else{
                   number2.setVisibility(View.INVISIBLE);
                   select2.setText("");
@@ -163,6 +166,7 @@ String userId;
                   select3.append(food3.getText().toString());
                   number3.setVisibility(View.VISIBLE);
                   p3.setText("450");
+                  number3.setText("1");
               }else{
                   number3.setVisibility(View.INVISIBLE);
                   select3.setText("");
@@ -179,6 +183,7 @@ String userId;
                   select4.append(food4.getText().toString());
                   number4.setVisibility(View.VISIBLE);
                   p4.setText("200");
+                  number4.setText("1");
               }else{
                   number4.setVisibility(View.INVISIBLE);
                   select4.setText("");
@@ -195,6 +200,7 @@ String userId;
                   select5.append(food5.getText().toString());
                   number5.setVisibility(View.VISIBLE);
                   p5.setText("600");
+                  number5.setText("1");
               }else{
                   number5.setVisibility(View.INVISIBLE);
                   select5.setText("");
@@ -208,6 +214,12 @@ String userId;
           public void onClick(View view) {
             total.append(select.getText().toString() + " x " + number1.getText().toString() +  select2.getText().toString() + " x " + number2.getText().toString() + select3.getText().toString() + " x " + number3.getText().toString() + select4.getText().toString() + " x " + number4.getText().toString() + " x " + number5.getText().toString() + select5.getText().toString());
            // test.append(number11.getText().toString());
+              a = Integer.parseInt(p1.getText().toString());
+              b = Integer.parseInt(number1.getText().toString());
+              c = a * b;
+              e = String.valueOf(c);
+              p1.setText(e);
+
           }
       });
     }
