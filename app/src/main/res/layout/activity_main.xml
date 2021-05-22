@@ -403,7 +403,7 @@
         android:layout_height="wrap_content"
         android:text="Phone Number"
         android:textColor="@color/black"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -418,7 +418,7 @@
         android:shadowColor="@color/black"
         android:text="Your Email"
         android:textColor="@color/black"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -432,13 +432,13 @@
         android:layout_height="wrap_content"
         android:text="Your Name"
         android:textColor="@color/black"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.157" />
+        app:layout_constraintVertical_bias="0.156" />
 
     <Button
         android:id="@+id/logout"
