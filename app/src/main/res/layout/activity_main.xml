@@ -89,12 +89,13 @@
         app:layout_constraintVertical_bias="0.977" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal6"
+        android:id="@+id/amount5"
         android:layout_width="57dp"
         android:layout_height="37dp"
         android:ems="10"
         android:inputType="numberDecimal"
         android:textSize="10sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.776"
@@ -103,12 +104,13 @@
         app:layout_constraintVertical_bias="0.865" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal5"
+        android:id="@+id/amount4"
         android:layout_width="57dp"
         android:layout_height="37dp"
         android:ems="10"
         android:inputType="numberDecimal"
         android:textSize="10sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.776"
@@ -117,12 +119,13 @@
         app:layout_constraintVertical_bias="0.734" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal4"
+        android:id="@+id/amount3"
         android:layout_width="57dp"
         android:layout_height="37dp"
         android:ems="10"
         android:inputType="numberDecimal"
         android:textSize="10sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.776"
@@ -131,12 +134,13 @@
         app:layout_constraintVertical_bias="0.602" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal3"
+        android:id="@+id/amount2"
         android:layout_width="57dp"
         android:layout_height="37dp"
         android:ems="10"
         android:inputType="numberDecimal"
         android:textSize="10sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.776"
@@ -471,6 +475,7 @@
         android:ems="10"
         android:inputType="numberDecimal"
         android:textSize="10sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.776"

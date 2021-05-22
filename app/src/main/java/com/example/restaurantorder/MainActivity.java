@@ -19,7 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class MainActivity extends AppCompatActivity {
 TextView fullName, email, phone;
-TextView select, select2, select3, select4, select5, food1, food2, food3, food4, food5, total;
+TextView select, select2, select3, select4, select5, food1, food2, food3, food4, food5, total, number1, number2, number3, number4, number5;
 Button btnClear, btnOrder, btnSelect1, btnSelect2, btnSelect3, btnSelect4, btnSelect5;
 FirebaseAuth fAuth;
 FirebaseFirestore fStore;
@@ -46,6 +46,11 @@ String userId;
         food3 = findViewById(R.id.item3);
         food4 = findViewById(R.id.item4);
         food5 = findViewById(R.id.item5);
+        number1 = findViewById(R.id.amount1);
+        number2 = findViewById(R.id.amount2);
+        number3 = findViewById(R.id.amount3);
+        number4 = findViewById(R.id.amount4);
+        number5 = findViewById(R.id.amount5);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
@@ -78,18 +83,29 @@ String userId;
             public void onClick(View view) {
               if(cb1.isChecked())
                   cb1.setChecked(false);
+                if(cb1.isChecked() == false);
+                number1.setVisibility(View.INVISIBLE);
+                number1.setText("");
               select.setText("");
              if(cb2.isChecked())
                   cb2.setChecked(false);
+                number2.setVisibility(View.INVISIBLE);
+                number2.setText("");
                 select2.setText("");
               if(cb3.isChecked())
                   cb3.setChecked(false);
+                number3.setVisibility(View.INVISIBLE);
+                number3.setText("");
                 select3.setText("");
               if(cb4.isChecked())
                   cb4.setChecked(false);
+                number4.setVisibility(View.INVISIBLE);
+                number4.setText("");
                 select4.setText("");
               if(cb5.isChecked())
                   cb5.setChecked(false);
+                number5.setVisibility(View.INVISIBLE);
+                number5.setText("");
                 select5.setText("");
                 total.setText("");
 
@@ -100,46 +116,79 @@ String userId;
       btnSelect1.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              if(cb1.isChecked())
+              if(cb1.isChecked()) {
                   select.append(food1.getText().toString());
+                  number1.setVisibility(View.VISIBLE);
+
+              }else{
+                  number1.setVisibility(View.INVISIBLE);
+                  select.setText("");
+                  number1.setText("");
+              }
           }
       });
+
 
       btnSelect2.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              if(cb2.isChecked())
+              if(cb2.isChecked()) {
                   select2.append(food2.getText().toString());
+                  number2.setVisibility(View.VISIBLE);
+              }else{
+                  number2.setVisibility(View.INVISIBLE);
+                  select2.setText("");
+                  number2.setText("");
+              }
           }
       });
 
       btnSelect3.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              if(cb3.isChecked())
+              if(cb3.isChecked()) {
                   select3.append(food3.getText().toString());
+                  number3.setVisibility(View.VISIBLE);
+              }else{
+                  number3.setVisibility(View.INVISIBLE);
+                  select3.setText("");
+                  number3.setText("");
+              }
           }
       });
 
       btnSelect4.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              if(cb4.isChecked())
+              if(cb4.isChecked()) {
                   select4.append(food4.getText().toString());
+                  number4.setVisibility(View.VISIBLE);
+              }else{
+                  number4.setVisibility(View.INVISIBLE);
+                  select4.setText("");
+                  number4.setText("");
+              }
           }
       });
 
       btnSelect5.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              if(cb5.isChecked())
+              if(cb5.isChecked()) {
                   select5.append(food5.getText().toString());
+                  number5.setVisibility(View.VISIBLE);
+              }else{
+                  number5.setVisibility(View.INVISIBLE);
+                  select5.setText("");
+                  number5.setText("");
+              }
           }
       });
       btnOrder.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-            total.append(select.getText().toString() +  select2.getText().toString() + select3.getText().toString() + select4.getText().toString() + select5.getText().toString());
+            total.append(select.getText().toString() + " x " + number1.getText().toString() +  select2.getText().toString() + " x " + number2.getText().toString() + select3.getText().toString() + " x " + number3.getText().toString() + select4.getText().toString() + " x " + number4.getText().toString() + " x " + number5.getText().toString() + select5.getText().toString());
+           // test.append(number11.getText().toString());
           }
       });
     }
