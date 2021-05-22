@@ -20,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 public class MainActivity extends AppCompatActivity {
 TextView fullName, email, phone;
 TextView select, select2, select3, select4, select5, food1, food2, food3, food4, food5;
-Button btnClear, btnOrder;
+Button btnClear, btnOrder, btnSelect1, btnSelect2, btnSelect3, btnSelect4, btnSelect5;
 FirebaseAuth fAuth;
 FirebaseFirestore fStore;
 String userId;
@@ -32,9 +32,9 @@ String userId;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        phone = findViewById(R.id.profilePhone);
-        fullName = findViewById(R.id.profileName);
-        email = findViewById(R.id.profileEmail);
+       // phone = findViewById(R.id.profilePhone);
+        //fullName = findViewById(R.id.profileName);
+        //email = findViewById(R.id.profileEmail);
         select = findViewById(R.id.selectcb1);
         select2 = findViewById(R.id.selectcb2);
         select3 = findViewById(R.id.selectcb3);
@@ -50,22 +50,27 @@ String userId;
         userId = fAuth.getCurrentUser().getUid();
         btnClear = (Button)findViewById(R.id.Clear);
         btnOrder = (Button)findViewById(R.id.Order);
+        btnSelect1 = (Button)findViewById(R.id.checkBox1);
+        btnSelect2 = (Button)findViewById(R.id.checkBox2);
+        btnSelect3 = (Button)findViewById(R.id.checkBox3);
+        btnSelect4 = (Button)findViewById(R.id.checkBox4);
+        btnSelect5 = (Button)findViewById(R.id.checkBox5);
         CheckBox cb1 = (CheckBox)findViewById(R.id.checkBox1);
         CheckBox cb2 = (CheckBox)findViewById(R.id.checkBox2);
         CheckBox cb3 = (CheckBox)findViewById(R.id.checkBox3);
         CheckBox cb4 = (CheckBox)findViewById(R.id.checkBox4);
         CheckBox cb5 = (CheckBox)findViewById(R.id.checkBox5);
         DocumentReference documentReference = fStore.collection("users").document(userId);
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+       /* documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
-                /*phone.setText(documentSnapshot.getString("phone"));
+                phone.setText(documentSnapshot.getString("phone"));
                 fullName.setText(documentSnapshot.getString("fName"));
                 email.setText(documentSnapshot.getString("email"));
 
-                 */
+
             }
-        });
+        });*/
 
       btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,19 +95,49 @@ String userId;
             }
         });
 
-      btnOrder.setOnClickListener(new View.OnClickListener() {
+      btnSelect1.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
               if(cb1.isChecked())
                   select.append(food1.getText().toString());
+          }
+      });
+
+      btnSelect2.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
               if(cb2.isChecked())
-                  select2.append(food2.getText().toString());
+                  select.append(food2.getText().toString());
+          }
+      });
+
+      btnSelect3.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
               if(cb3.isChecked())
-                  select3.append(food3.getText().toString());
+                  select.append(food3.getText().toString());
+          }
+      });
+
+      btnSelect4.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
               if(cb4.isChecked())
-                  select4.append(food4.getText().toString());
+                  select.append(food4.getText().toString());
+          }
+      });
+
+      btnSelect5.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
               if(cb5.isChecked())
-                  select5.append(food5.getText().toString());
+                  select.append(food5.getText().toString());
+          }
+      });
+      btnOrder.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+             //REGJISTRO TE DHENAT E SELECT
           }
       });
     }
