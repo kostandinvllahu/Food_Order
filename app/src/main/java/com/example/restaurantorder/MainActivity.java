@@ -19,7 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class MainActivity extends AppCompatActivity {
 TextView fullName, email, phone;
-TextView select, select2, select3, select4, select5, food1, food2, food3, food4, food5, total, number1, number2, number3, number4, number5;
+TextView select, select2, select3, select4, select5, food1, food2, food3, food4, food5, total, number1, number2, number3, number4, number5, p1, p2, p3, p4, p5;
 Button btnClear, btnOrder, btnSelect1, btnSelect2, btnSelect3, btnSelect4, btnSelect5;
 FirebaseAuth fAuth;
 FirebaseFirestore fStore;
@@ -51,6 +51,11 @@ String userId;
         number3 = findViewById(R.id.amount3);
         number4 = findViewById(R.id.amount4);
         number5 = findViewById(R.id.amount5);
+        p1 = findViewById(R.id.price1);
+        p2 = findViewById(R.id.price2);
+        p3 = findViewById(R.id.price3);
+        p4 = findViewById(R.id.price4);
+        p5 = findViewById(R.id.price5);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
@@ -83,30 +88,34 @@ String userId;
             public void onClick(View view) {
               if(cb1.isChecked())
                   cb1.setChecked(false);
-                if(cb1.isChecked() == false);
                 number1.setVisibility(View.INVISIBLE);
                 number1.setText("");
               select.setText("");
+              p1.setText("");
              if(cb2.isChecked())
                   cb2.setChecked(false);
                 number2.setVisibility(View.INVISIBLE);
                 number2.setText("");
                 select2.setText("");
+                p2.setText("");
               if(cb3.isChecked())
                   cb3.setChecked(false);
                 number3.setVisibility(View.INVISIBLE);
                 number3.setText("");
                 select3.setText("");
+                p3.setText("");
               if(cb4.isChecked())
                   cb4.setChecked(false);
                 number4.setVisibility(View.INVISIBLE);
                 number4.setText("");
                 select4.setText("");
+                p4.setText("");
               if(cb5.isChecked())
                   cb5.setChecked(false);
                 number5.setVisibility(View.INVISIBLE);
                 number5.setText("");
                 select5.setText("");
+                p5.setText("");
                 total.setText("");
 
               
@@ -119,11 +128,13 @@ String userId;
               if(cb1.isChecked()) {
                   select.append(food1.getText().toString());
                   number1.setVisibility(View.VISIBLE);
+                  p1.setText("300");
 
               }else{
                   number1.setVisibility(View.INVISIBLE);
                   select.setText("");
                   number1.setText("");
+                  p1.setText("");
               }
           }
       });
@@ -135,10 +146,12 @@ String userId;
               if(cb2.isChecked()) {
                   select2.append(food2.getText().toString());
                   number2.setVisibility(View.VISIBLE);
+                  p2.setText("500");
               }else{
                   number2.setVisibility(View.INVISIBLE);
                   select2.setText("");
                   number2.setText("");
+                  p2.setText("");
               }
           }
       });
@@ -149,10 +162,12 @@ String userId;
               if(cb3.isChecked()) {
                   select3.append(food3.getText().toString());
                   number3.setVisibility(View.VISIBLE);
+                  p3.setText("450");
               }else{
                   number3.setVisibility(View.INVISIBLE);
                   select3.setText("");
                   number3.setText("");
+                  p3.setText("");
               }
           }
       });
@@ -163,10 +178,12 @@ String userId;
               if(cb4.isChecked()) {
                   select4.append(food4.getText().toString());
                   number4.setVisibility(View.VISIBLE);
+                  p4.setText("200");
               }else{
                   number4.setVisibility(View.INVISIBLE);
                   select4.setText("");
                   number4.setText("");
+                  p4.setText("");
               }
           }
       });
@@ -177,10 +194,12 @@ String userId;
               if(cb5.isChecked()) {
                   select5.append(food5.getText().toString());
                   number5.setVisibility(View.VISIBLE);
+                  p5.setText("600");
               }else{
                   number5.setVisibility(View.INVISIBLE);
                   select5.setText("");
                   number5.setText("");
+                  p5.setText("");
               }
           }
       });
