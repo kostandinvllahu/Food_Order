@@ -1,20 +1,31 @@
 package com.example.restaurantorder;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userId, e, finalPrice;;
     int a, b, c, a1, b1, c1, a2, b2, c2, a3, b3, c3, a4, b4, c4, finalP;
+   //private TextView alertTextView;
 
     @Override
 
@@ -256,9 +268,40 @@ public class MainActivity extends AppCompatActivity {
                 }
                 finalP = c + c1 + c2 + c3 + c4;
                 finalPrice = String.valueOf(finalP);
-               total.append(finalPrice.toString());
-              //total.append(select.getText().toString() + " x " + number1.getText().toString() +  select2.getText().toString() + " x " + number2.getText().toString() + select3.getText().toString() + " x " + number3.getText().toString() + select4.getText().toString() + " x " + number4.getText().toString() + " x " + number5.getText().toString() + select5.getText().toString() + finalPrice.toString());
-                // test.append(number11.getText().toString());
+               //total.append(finalPrice.toString());
+              total.append(select.getText().toString() + number1.getText().toString() +" "+ select2.getText().toString() + number2.getText().toString() +" "+ select3.getText().toString()  + number3.getText().toString() +" "+ select4.getText().toString() + " " + number4.getText().toString() + "  " + number5.getText().toString() + select5.getText().toString() +" "+ finalPrice.toString());
+
+              String insert = total.getText().toString();
+              if(TextUtils.isEmpty(insert)){
+                  AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                  builder.setCancelable(true);
+                  builder.setTitle("Opss...");
+                  builder.setTitle("You cannot submit an empty order please select one or more items from the menu below.");
+                  builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                      @Override
+                      public void onClick(DialogInterface dialogInterface, int i) {
+                        //  alertTextView.setVisibility(View.VISIBLE);
+                      }
+                  });
+                  builder.show();
+                  return;
+              }
+                  Map<String, String> OrderMap = new HashMap<>();
+                  OrderMap.put("fatura", insert);
+                  fStore.collection("fatura").add(OrderMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                      @Override
+                      public void onSuccess(DocumentReference documentReference) {
+                          Toast.makeText(MainActivity.this, "Order is added!", Toast.LENGTH_SHORT).show();
+                      }
+                  }).addOnFailureListener(new OnFailureListener() {
+                      @Override
+                      public void onFailure(@NonNull Exception e) {
+                          String error = e.getMessage();
+                          Toast.makeText(MainActivity.this, "Error: " + error, Toast.LENGTH_SHORT).show();
+                      }
+                  });
+
+              //Insert
             }
         });
     }
