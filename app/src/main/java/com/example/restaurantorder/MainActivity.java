@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userId, e, finalPrice;;
     int a, b, c, a1, b1, c1, a2, b2, c2, a3, b3, c3, a4, b4, c4, finalP;
-   //private TextView alertTextView;
+    Boolean check = false;
 
     @Override
 
@@ -103,24 +103,28 @@ public class MainActivity extends AppCompatActivity {
                 number1.setText("");
                 select.setText("");
                 p1.setText("");
+                check = false;
                 if(cb2.isChecked())
                     cb2.setChecked(false);
                 number2.setVisibility(View.INVISIBLE);
                 number2.setText("");
                 select2.setText("");
                 p2.setText("");
+                check = false;
                 if(cb3.isChecked())
                     cb3.setChecked(false);
                 number3.setVisibility(View.INVISIBLE);
                 number3.setText("");
                 select3.setText("");
                 p3.setText("");
+                check = false;
                 if(cb4.isChecked())
                     cb4.setChecked(false);
                 number4.setVisibility(View.INVISIBLE);
                 number4.setText("");
                 select4.setText("");
                 p4.setText("");
+                check = false;
                 if(cb5.isChecked())
                     cb5.setChecked(false);
                 number5.setVisibility(View.INVISIBLE);
@@ -128,8 +132,7 @@ public class MainActivity extends AppCompatActivity {
                 select5.setText("");
                 p5.setText("");
                 total.setText("");
-
-
+                check = false;
             }
         });
 
@@ -141,12 +144,13 @@ public class MainActivity extends AppCompatActivity {
                     number1.setVisibility(View.VISIBLE);
                     p1.setText("300");
                     number1.setText("1");
-
+                    check = true;
                 }else{
                     number1.setVisibility(View.INVISIBLE);
                     select.setText("");
                     number1.setText("");
                     p1.setText("");
+                    check = false;
                 }
             }
         });
@@ -160,11 +164,13 @@ public class MainActivity extends AppCompatActivity {
                     number2.setVisibility(View.VISIBLE);
                     p2.setText("500");
                     number2.setText("1");
+                    check = true;
                 }else{
                     number2.setVisibility(View.INVISIBLE);
                     select2.setText("");
                     number2.setText("");
                     p2.setText("");
+                    check = false;
                 }
             }
         });
@@ -177,11 +183,13 @@ public class MainActivity extends AppCompatActivity {
                     number3.setVisibility(View.VISIBLE);
                     p3.setText("450");
                     number3.setText("1");
+                    check = true;
                 }else{
                     number3.setVisibility(View.INVISIBLE);
                     select3.setText("");
                     number3.setText("");
                     p3.setText("");
+                    check = false;
                 }
             }
         });
@@ -194,11 +202,13 @@ public class MainActivity extends AppCompatActivity {
                     number4.setVisibility(View.VISIBLE);
                     p4.setText("200");
                     number4.setText("1");
+                    check = true;
                 }else{
                     number4.setVisibility(View.INVISIBLE);
                     select4.setText("");
                     number4.setText("");
                     p4.setText("");
+                    check = false;
                 }
             }
         });
@@ -211,11 +221,13 @@ public class MainActivity extends AppCompatActivity {
                     number5.setVisibility(View.VISIBLE);
                     p5.setText("600");
                     number5.setText("1");
+                    check = true;
                 }else{
                     number5.setVisibility(View.INVISIBLE);
                     select5.setText("");
                     number5.setText("");
                     p5.setText("");
+                    check = false;
                 }
             }
         });
@@ -266,42 +278,44 @@ public class MainActivity extends AppCompatActivity {
                     e = String.valueOf(c4);
                     p5.setText(e);
                 }
-                finalP = c + c1 + c2 + c3 + c4;
-                finalPrice = String.valueOf(finalP);
-               //total.append(finalPrice.toString());
-              total.append(select.getText().toString() + number1.getText().toString() +" "+ select2.getText().toString() + number2.getText().toString() +" "+ select3.getText().toString()  + number3.getText().toString() +" "+ select4.getText().toString() + " " + number4.getText().toString() + "  " + number5.getText().toString() + select5.getText().toString() +" "+ finalPrice.toString());
+                if(check == true) {
+                    finalP = c + c1 + c2 + c3 + c4;
+                    finalPrice = String.valueOf(finalP);
+                    //total.append(finalPrice.toString());
+                    total.append(select.getText().toString() + number1.getText().toString() + " " + select2.getText().toString() + number2.getText().toString() + " " + select3.getText().toString() + number3.getText().toString() + " " + select4.getText().toString() + " " + number4.getText().toString() + "  " + number5.getText().toString() + select5.getText().toString() + " " + finalPrice.toString());
+                    //SHIKO KETU PER TE VENE NE FUNKSION IF ELSE NESE ESHTE FATURA BOSH!
+                    String insert = null;
+                    insert = total.getText().toString();
 
-              String insert = total.getText().toString();
-              if(TextUtils.isEmpty(insert)){
-                  AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                  builder.setCancelable(true);
-                  builder.setTitle("Opss...");
-                  builder.setTitle("You cannot submit an empty order please select one or more items from the menu below.");
-                  builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                      @Override
-                      public void onClick(DialogInterface dialogInterface, int i) {
-                        //  alertTextView.setVisibility(View.VISIBLE);
-                      }
-                  });
-                  builder.show();
-                  return;
-              }
-                  Map<String, String> OrderMap = new HashMap<>();
-                  OrderMap.put("fatura", insert);
-                  fStore.collection("fatura").add(OrderMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                      @Override
-                      public void onSuccess(DocumentReference documentReference) {
-                          Toast.makeText(MainActivity.this, "Order is added!", Toast.LENGTH_SHORT).show();
-                      }
-                  }).addOnFailureListener(new OnFailureListener() {
-                      @Override
-                      public void onFailure(@NonNull Exception e) {
-                          String error = e.getMessage();
-                          Toast.makeText(MainActivity.this, "Error: " + error, Toast.LENGTH_SHORT).show();
-                      }
-                  });
+                    Map<String, String> OrderMap = new HashMap<>();
+                    OrderMap.put("fatura", insert);
+                    fStore.collection("fatura").add(OrderMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Toast.makeText(MainActivity.this, "Order is added!", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            String error = e.getMessage();
+                            Toast.makeText(MainActivity.this, "Error: " + error, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }else if(check == false) {
 
-              //Insert
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setCancelable(true);
+                    builder.setTitle("Opss...");
+                    builder.setTitle("You cannot submit an empty order please select one or more items from the menu below.");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //  alertTextView.setVisibility(View.VISIBLE);
+                        }
+                    });
+                    builder.show();
+                    return;
+                }
             }
         });
     }
