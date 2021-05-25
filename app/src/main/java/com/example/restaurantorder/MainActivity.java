@@ -96,47 +96,47 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    btnClear.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if (cb1.isChecked())
-                cb1.setChecked(false);
-            number1.setVisibility(View.INVISIBLE);
-            number1.setText("");
-            select.setText("");
-            p1.setText("");
-            check = false;
-            if (cb2.isChecked())
-                cb2.setChecked(false);
-            number2.setVisibility(View.INVISIBLE);
-            number2.setText("");
-            select2.setText("");
-            p2.setText("");
-            check = false;
-            if (cb3.isChecked())
-                cb3.setChecked(false);
-            number3.setVisibility(View.INVISIBLE);
-            number3.setText("");
-            select3.setText("");
-            p3.setText("");
-            check = false;
-            if (cb4.isChecked())
-                cb4.setChecked(false);
-            number4.setVisibility(View.INVISIBLE);
-            number4.setText("");
-            select4.setText("");
-            p4.setText("");
-            check = false;
-            if (cb5.isChecked())
-                cb5.setChecked(false);
-            number5.setVisibility(View.INVISIBLE);
-            number5.setText("");
-            select5.setText("");
-            p5.setText("");
-            total.setText("");
-            check = false;
-        }
-    });
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (cb1.isChecked())
+                    cb1.setChecked(false);
+                number1.setVisibility(View.INVISIBLE);
+                number1.setText("");
+                select.setText("");
+                p1.setText("");
+                check = false;
+                if (cb2.isChecked())
+                    cb2.setChecked(false);
+                number2.setVisibility(View.INVISIBLE);
+                number2.setText("");
+                select2.setText("");
+                p2.setText("");
+                check = false;
+                if (cb3.isChecked())
+                    cb3.setChecked(false);
+                number3.setVisibility(View.INVISIBLE);
+                number3.setText("");
+                select3.setText("");
+                p3.setText("");
+                check = false;
+                if (cb4.isChecked())
+                    cb4.setChecked(false);
+                number4.setVisibility(View.INVISIBLE);
+                number4.setText("");
+                select4.setText("");
+                p4.setText("");
+                check = false;
+                if (cb5.isChecked())
+                    cb5.setChecked(false);
+                number5.setVisibility(View.INVISIBLE);
+                number5.setText("");
+                select5.setText("");
+                p5.setText("");
+                total.setText("");
+                check = false;
+            }
+        });
 
         btnSelect1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -247,13 +247,13 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 //CheckBox2
-               if(cb2.isChecked()) {
-                   a1 = Integer.parseInt(p2.getText().toString());
-                   b1 = Integer.parseInt(number2.getText().toString());
-                   c1 = a1 * b1;
-                   e = String.valueOf(c1);
-                   p2.setText(e);
-               }
+                if(cb2.isChecked()) {
+                    a1 = Integer.parseInt(p2.getText().toString());
+                    b1 = Integer.parseInt(number2.getText().toString());
+                    c1 = a1 * b1;
+                    e = String.valueOf(c1);
+                    p2.setText(e);
+                }
                 //CheckBox3
                 if(cb3.isChecked()){
                     a2 = Integer.parseInt(p3.getText().toString());
@@ -293,31 +293,42 @@ public class MainActivity extends AppCompatActivity {
                     OrderMap.put("fatura", insert);
                     clean = true;
                     if(clean == true){
-                        cb1.setChecked(false);
+                        if (cb1.isChecked())
+                            cb1.setChecked(false);
                         number1.setVisibility(View.INVISIBLE);
-                        select.setText("");
                         number1.setText("");
+                        select.setText("");
                         p1.setText("");
-                        cb2.setChecked(false);
+                        check = false;
+                        if (cb2.isChecked())
+                            cb2.setChecked(false);
                         number2.setVisibility(View.INVISIBLE);
-                        select2.setText("");
                         number2.setText("");
+                        select2.setText("");
                         p2.setText("");
-                        cb3.setChecked(false);
+                        check = false;
+                        if (cb3.isChecked())
+                            cb3.setChecked(false);
                         number3.setVisibility(View.INVISIBLE);
-                        select3.setText("");
                         number3.setText("");
+                        select3.setText("");
                         p3.setText("");
-                        cb4.setChecked(false);
+                        check = false;
+                        if (cb4.isChecked())
+                            cb4.setChecked(false);
                         number4.setVisibility(View.INVISIBLE);
-                        select4.setText("");
                         number4.setText("");
+                        select4.setText("");
                         p4.setText("");
-                        cb5.setChecked(false);
+                        check = false;
+                        if (cb5.isChecked())
+                            cb5.setChecked(false);
                         number5.setVisibility(View.INVISIBLE);
-                        select5.setText("");
                         number5.setText("");
+                        select5.setText("");
                         p5.setText("");
+                        total.setText("");
+                        check = false;
                     }
                     fStore.collection("fatura").add(OrderMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
 
