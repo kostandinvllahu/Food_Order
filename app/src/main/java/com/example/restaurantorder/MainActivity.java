@@ -286,7 +286,6 @@ public class MainActivity extends AppCompatActivity {
                     finalPrice = String.valueOf(finalP);
                     //total.append(finalPrice.toString());
                     total.append(select.getText().toString() + number1.getText().toString() + " " + select2.getText().toString() + number2.getText().toString() + " " + select3.getText().toString() + number3.getText().toString() + " " + select4.getText().toString() + " " + number4.getText().toString() + "  " + number5.getText().toString() + select5.getText().toString() + " " + finalPrice.toString());
-                    //SHIKO KETU PER TE VENE NE FUNKSION IF ELSE NESE ESHTE FATURA BOSH!
                     String insert = null;
                     insert = total.getText().toString();
 
@@ -330,13 +329,24 @@ public class MainActivity extends AppCompatActivity {
                         p5.setText("");
                         total.setText("");
                         check = false;
-                        redirect = true;
                     }
                     fStore.collection("fatura").add(OrderMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
 
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             Toast.makeText(MainActivity.this, "Order is added!", Toast.LENGTH_SHORT).show();
+                            redirect = true;
+                            if (redirect = true) {
+                                timer = new Timer();
+                                timer.schedule(new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        Intent intent = new Intent(MainActivity.this, Order.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }, 1000);
+                            }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -360,19 +370,10 @@ public class MainActivity extends AppCompatActivity {
                     builder.show();
                     return;
                 }
+
             }
         });
-        if (redirect = true) {
-            timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    Intent intent = new Intent(MainActivity.this, Order.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }, 5000);
-        }
+       //KETU ISHTE!
     }
     public void logout(View view){
         FirebaseAuth.getInstance().signOut();
