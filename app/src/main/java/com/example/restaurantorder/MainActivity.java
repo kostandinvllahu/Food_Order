@@ -26,6 +26,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -36,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userId, e, finalPrice;;
     int a, b, c, a1, b1, c1, a2, b2, c2, a3, b3, c3, a4, b4, c4, finalP;
-    Boolean check = false, clean=false;
-
+    Boolean check = false, clean=false, redirect = false;
+    Timer timer;
     @Override
 
 
@@ -72,18 +74,18 @@ public class MainActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
-        btnClear = (Button)findViewById(R.id.Clear);
-        btnOrder = (Button)findViewById(R.id.Order);
-        btnSelect1 = (Button)findViewById(R.id.checkBox1);
-        btnSelect2 = (Button)findViewById(R.id.checkBox2);
-        btnSelect3 = (Button)findViewById(R.id.checkBox3);
-        btnSelect4 = (Button)findViewById(R.id.checkBox4);
-        btnSelect5 = (Button)findViewById(R.id.checkBox5);
-        CheckBox cb1 = (CheckBox)findViewById(R.id.checkBox1);
-        CheckBox cb2 = (CheckBox)findViewById(R.id.checkBox2);
-        CheckBox cb3 = (CheckBox)findViewById(R.id.checkBox3);
-        CheckBox cb4 = (CheckBox)findViewById(R.id.checkBox4);
-        CheckBox cb5 = (CheckBox)findViewById(R.id.checkBox5);
+        btnClear = (Button) findViewById(R.id.Clear);
+        btnOrder = (Button) findViewById(R.id.Order);
+        btnSelect1 = (Button) findViewById(R.id.checkBox1);
+        btnSelect2 = (Button) findViewById(R.id.checkBox2);
+        btnSelect3 = (Button) findViewById(R.id.checkBox3);
+        btnSelect4 = (Button) findViewById(R.id.checkBox4);
+        btnSelect5 = (Button) findViewById(R.id.checkBox5);
+        CheckBox cb1 = (CheckBox) findViewById(R.id.checkBox1);
+        CheckBox cb2 = (CheckBox) findViewById(R.id.checkBox2);
+        CheckBox cb3 = (CheckBox) findViewById(R.id.checkBox3);
+        CheckBox cb4 = (CheckBox) findViewById(R.id.checkBox4);
+        CheckBox cb5 = (CheckBox) findViewById(R.id.checkBox5);
         DocumentReference documentReference = fStore.collection("users").document(userId);
        /* documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -93,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 email.setText(documentSnapshot.getString("email"));
             }
         });*/
-
 
 
         btnClear.setOnClickListener(new View.OnClickListener() {
@@ -141,13 +142,13 @@ public class MainActivity extends AppCompatActivity {
         btnSelect1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(cb1.isChecked()) {
+                if (cb1.isChecked()) {
                     select.append(food1.getText().toString());
                     number1.setVisibility(View.VISIBLE);
                     p1.setText("300");
                     number1.setText("1");
                     check = true;
-                }else{
+                } else {
                     number1.setVisibility(View.INVISIBLE);
                     select.setText("");
                     number1.setText("");
@@ -161,13 +162,13 @@ public class MainActivity extends AppCompatActivity {
         btnSelect2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(cb2.isChecked()) {
+                if (cb2.isChecked()) {
                     select2.append(food2.getText().toString());
                     number2.setVisibility(View.VISIBLE);
                     p2.setText("500");
                     number2.setText("1");
                     check = true;
-                }else{
+                } else {
                     number2.setVisibility(View.INVISIBLE);
                     select2.setText("");
                     number2.setText("");
@@ -180,13 +181,13 @@ public class MainActivity extends AppCompatActivity {
         btnSelect3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(cb3.isChecked()) {
+                if (cb3.isChecked()) {
                     select3.append(food3.getText().toString());
                     number3.setVisibility(View.VISIBLE);
                     p3.setText("450");
                     number3.setText("1");
                     check = true;
-                }else{
+                } else {
                     number3.setVisibility(View.INVISIBLE);
                     select3.setText("");
                     number3.setText("");
@@ -199,13 +200,13 @@ public class MainActivity extends AppCompatActivity {
         btnSelect4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(cb4.isChecked()) {
+                if (cb4.isChecked()) {
                     select4.append(food4.getText().toString());
                     number4.setVisibility(View.VISIBLE);
                     p4.setText("200");
                     number4.setText("1");
                     check = true;
-                }else{
+                } else {
                     number4.setVisibility(View.INVISIBLE);
                     select4.setText("");
                     number4.setText("");
@@ -218,13 +219,13 @@ public class MainActivity extends AppCompatActivity {
         btnSelect5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(cb5.isChecked()) {
+                if (cb5.isChecked()) {
                     select5.append(food5.getText().toString());
                     number5.setVisibility(View.VISIBLE);
                     p5.setText("600");
                     number5.setText("1");
                     check = true;
-                }else{
+                } else {
                     number5.setVisibility(View.INVISIBLE);
                     select5.setText("");
                     number5.setText("");
@@ -238,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //CheckBox1
-                if(cb1.isChecked()){
+                if (cb1.isChecked()) {
                     a = Integer.parseInt(p1.getText().toString());
                     b = Integer.parseInt(number1.getText().toString());
                     c = a * b;
@@ -247,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 //CheckBox2
-                if(cb2.isChecked()) {
+                if (cb2.isChecked()) {
                     a1 = Integer.parseInt(p2.getText().toString());
                     b1 = Integer.parseInt(number2.getText().toString());
                     c1 = a1 * b1;
@@ -255,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
                     p2.setText(e);
                 }
                 //CheckBox3
-                if(cb3.isChecked()){
+                if (cb3.isChecked()) {
                     a2 = Integer.parseInt(p3.getText().toString());
                     b2 = Integer.parseInt(number3.getText().toString());
                     c2 = a2 * b2;
@@ -264,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 //CheckBox4
-                if(cb4.isChecked()){
+                if (cb4.isChecked()) {
                     a3 = Integer.parseInt(p4.getText().toString());
                     b3 = Integer.parseInt(number4.getText().toString());
                     c3 = a3 * b3;
@@ -273,14 +274,14 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 //CheckBox5
-                if(cb5.isChecked()){
+                if (cb5.isChecked()) {
                     a4 = Integer.parseInt(p5.getText().toString());
                     b4 = Integer.parseInt(number5.getText().toString());
                     c4 = a4 * b4;
                     e = String.valueOf(c4);
                     p5.setText(e);
                 }
-                if(check == true) {
+                if (check == true) {
                     finalP = c + c1 + c2 + c3 + c4;
                     finalPrice = String.valueOf(finalP);
                     //total.append(finalPrice.toString());
@@ -292,7 +293,7 @@ public class MainActivity extends AppCompatActivity {
                     Map<String, String> OrderMap = new HashMap<>();
                     OrderMap.put("fatura", insert);
                     clean = true;
-                    if(clean == true){
+                    if (clean == true) {
                         if (cb1.isChecked())
                             cb1.setChecked(false);
                         number1.setVisibility(View.INVISIBLE);
@@ -329,6 +330,7 @@ public class MainActivity extends AppCompatActivity {
                         p5.setText("");
                         total.setText("");
                         check = false;
+                        redirect = true;
                     }
                     fStore.collection("fatura").add(OrderMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
 
@@ -343,7 +345,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Error: " + error, Toast.LENGTH_SHORT).show();
                         }
                     });
-                }else if(check == false) {
+                } else if (check == false) {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setCancelable(true);
@@ -357,10 +359,20 @@ public class MainActivity extends AppCompatActivity {
                     });
                     builder.show();
                     return;
-
                 }
             }
         });
+        if (redirect = true) {
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(MainActivity.this, Order.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }, 5000);
+        }
     }
     public void logout(View view){
         FirebaseAuth.getInstance().signOut();
@@ -368,8 +380,4 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    public void order(View view){
-        startActivity(new Intent(getApplicationContext(),Order.class));
-        finish();
-    }
 }
