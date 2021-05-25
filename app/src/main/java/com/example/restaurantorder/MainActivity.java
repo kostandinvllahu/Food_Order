@@ -306,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setCancelable(true);
                     builder.setTitle("Opss...");
-                    builder.setTitle("You cannot submit an empty order please select one or more items from the menu below.");
+                    builder.setTitle("You cannot submit an empty order...");
                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
