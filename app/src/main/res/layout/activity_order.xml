@@ -8,16 +8,16 @@
 
     <Button
         android:id="@+id/submit"
-        android:layout_width="326dp"
-        android:layout_height="49dp"
-        android:text="Submit"
+        android:layout_width="188dp"
+        android:layout_height="45dp"
         android:onClick="this"
+        android:text="Delivery"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96"
+        app:layout_constraintVertical_bias="0.227"
         tools:ignore="OnClick" />
 
     <View
@@ -50,11 +50,33 @@
 
     <FrameLayout
         android:id="@+id/delivery"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="371dp">
+        android:layout_width="387dp"
+        android:layout_height="499dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" >
 
     </FrameLayout>
+
+    <Button
+        android:id="@+id/submit2"
+        android:layout_width="188dp"
+        android:layout_height="45dp"
+        android:onClick="this"
+        android:text="Take Away"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.227"
+        tools:ignore="OnClick" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
