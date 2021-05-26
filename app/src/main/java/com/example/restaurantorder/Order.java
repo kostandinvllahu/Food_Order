@@ -18,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class Order extends AppCompatActivity {
-Button del, subTotal;
+Button del, take;
 TextView id;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -31,6 +31,7 @@ TextView id;
         setContentView(R.layout.activity_order);
         del =findViewById(R.id.submit);
         del.setOnClickListener(this::onClick);
+        take = findViewById(R.id.submit2);
         adr = findViewById(R.id.address);
 
         //  getSupportFragmentManager().beginTransaction().add(R.id.delivery,new Delivery()).commit();
