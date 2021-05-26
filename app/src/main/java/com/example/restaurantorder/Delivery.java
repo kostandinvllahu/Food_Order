@@ -4,10 +4,12 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,10 +22,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
  */
 public class Delivery extends Fragment {
 
+   private EditText text;
+
     private Button sub;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    TextView id;
+
 
 
 
@@ -61,6 +65,8 @@ public class Delivery extends Fragment {
 
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,12 +83,17 @@ public class Delivery extends Fragment {
 
 
         // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_delivery, container, false);
         sub = view.findViewById(R.id.subTotal);
+        text = view.findViewById(R.id.address);
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String temp = text.getText().toString().trim();
+                  if(temp.length() == 0){
+                      text.setText("Address is mandatory!");
+                }
             }
         });
         return view;
