@@ -27,7 +27,7 @@ import java.util.TimerTask;
 public class Delivery extends Fragment {
 
    private EditText text;
-   private  TextView success;
+   private  TextView success, success1;
     private Button sub;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -94,17 +94,25 @@ public class Delivery extends Fragment {
         sub = view.findViewById(R.id.subTotal);
         text = view.findViewById(R.id.address);
         success = view.findViewById(R.id.textView7);
+        success1 = view.findViewById(R.id.textView8);
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String temp = text.getText().toString().trim();
                   if(temp.length() == 0){
                       check = true;
-                      text.setText("Address is mandatory!");
+                      success1.setText("Address is mandatory!");
                 }else{
                       success.setText("Your order is completed, please wait for the delivery to arrive!");
-                     Intent redirect = new Intent(getActivity(),MainActivity.class);
-                     getActivity().startActivity(redirect);
+                      timer = new Timer();
+                      timer.schedule(new TimerTask() {
+                          @Override
+                          public void run() {
+                              Intent redirect = new Intent(getActivity(),MainActivity.class);
+                              getActivity().startActivity(redirect);
+
+                          }
+                      }, 1000);
                   }
             }
         });
