@@ -489,6 +489,33 @@
         app:layout_constraintVertical_bias="0.003"
         tools:ignore="MissingConstraints" />
 
+    <TextView
+        android:id="@+id/tempTotal"
+        android:layout_width="122dp"
+        android:layout_height="33dp"
+        android:shadowColor="@color/black"
+        android:text="Speca te mbushura"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.573"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.143" />
+
+    <Button
+        android:id="@+id/logout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="logout"
+        android:text="Check Total"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.134" />
+
     <Button
         android:id="@+id/logout"
         android:layout_width="wrap_content"
