@@ -23,6 +23,7 @@ TextView id;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     EditText adr;
+    boolean check = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,5 +1,6 @@
 package com.example.restaurantorder;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,6 +16,9 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Delivery#newInstance} factory method to
@@ -28,6 +32,7 @@ public class Delivery extends Fragment {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     boolean check = false;
+    Timer timer;
 
 
 
@@ -98,6 +103,8 @@ public class Delivery extends Fragment {
                       text.setText("Address is mandatory!");
                 }else{
                       success.setText("Your order is completed, please wait for the delivery to arrive!");
+                     Intent redirect = new Intent(getActivity(),MainActivity.class);
+                     getActivity().startActivity(redirect);
                   }
             }
         });
