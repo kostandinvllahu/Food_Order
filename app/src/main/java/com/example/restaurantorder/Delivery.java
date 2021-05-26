@@ -23,10 +23,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Delivery extends Fragment {
 
    private EditText text;
-
+   private  TextView success;
     private Button sub;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
+    boolean check = false;
 
 
 
@@ -87,13 +88,17 @@ public class Delivery extends Fragment {
         View view = inflater.inflate(R.layout.fragment_delivery, container, false);
         sub = view.findViewById(R.id.subTotal);
         text = view.findViewById(R.id.address);
+        success = view.findViewById(R.id.textView7);
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String temp = text.getText().toString().trim();
                   if(temp.length() == 0){
+                      check = true;
                       text.setText("Address is mandatory!");
-                }
+                }else{
+                      success.setText("Your order is completed, please wait for the delivery to arrive!");
+                  }
             }
         });
         return view;
