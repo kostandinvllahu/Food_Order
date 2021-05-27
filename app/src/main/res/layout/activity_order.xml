@@ -21,6 +21,20 @@
         app:layout_constraintVertical_bias="0.227"
         tools:ignore="OnClick" />
 
+    <Button
+        android:id="@+id/submit2"
+        android:layout_width="188dp"
+        android:layout_height="45dp"
+        android:onClick="this"
+        android:text="Take Away"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.227"
+        tools:ignore="OnClick" />
+
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
@@ -82,18 +96,5 @@
 
     </FrameLayout>
 
-    <Button
-        android:id="@+id/submit2"
-        android:layout_width="188dp"
-        android:layout_height="45dp"
-        android:onClick="this"
-        android:text="Take Away"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.227"
-        tools:ignore="OnClick" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,8 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class Order extends AppCompatActivity {
-Button del, take;
-TextView id;
+    Button del, take;
+    TextView id;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     EditText adr;
@@ -29,16 +29,23 @@ TextView id;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
-        del =findViewById(R.id.submit);
+        del = findViewById(R.id.submit);
         del.setOnClickListener(this::onClick);
         take = findViewById(R.id.submit2);
+        take.setOnClickListener(this::onClick);
         adr = findViewById(R.id.address);
 
         //  getSupportFragmentManager().beginTransaction().add(R.id.delivery,new Delivery()).commit();
     }
-    public void onClick(View v){
-        if(v.getId()==R.id.submit){
-            getSupportFragmentManager().beginTransaction().add(R.id.delivery,new Delivery()).commit();
+
+
+    public void onClick(View v) {
+        if (v.getId() == R.id.submit) {
+            getSupportFragmentManager().beginTransaction().add(R.id.delivery, new Delivery()).commit();
+        }
+        if(v.getId() == R.id.submit2){
+            getSupportFragmentManager().beginTransaction().add(R.id.delivery, new Take_Away()).commit();
         }
     }
-}
+    }
+
