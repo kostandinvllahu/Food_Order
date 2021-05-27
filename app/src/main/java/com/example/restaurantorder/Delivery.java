@@ -28,7 +28,7 @@ public class Delivery extends Fragment {
 
    private EditText text;
    private  TextView success, success1;
-    private Button sub;
+    private Button sub, res;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     boolean check = false;
@@ -92,9 +92,18 @@ public class Delivery extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_delivery, container, false);
         sub = view.findViewById(R.id.subTotal);
+        res = view.findViewById(R.id.subTotal2);
         text = view.findViewById(R.id.address);
         success = view.findViewById(R.id.textView7);
         success1 = view.findViewById(R.id.textView8);
+
+        res.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                text.setText("");
+            }
+        });
+
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

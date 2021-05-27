@@ -1,6 +1,7 @@
 package com.example.restaurantorder;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +31,8 @@ public class Order extends AppCompatActivity {
         take.setOnClickListener(this::onClick);
         adr = findViewById(R.id.address);
 
+        Fragment fragment = new Fragment();
+        //getSupportFragmentManager().
         //  getSupportFragmentManager().beginTransaction().add(R.id.delivery,new Delivery()).commit();
     }
 
@@ -47,8 +50,10 @@ public class Order extends AppCompatActivity {
             layoutOne.setVisibility(View.INVISIBLE);
             FrameLayout layout = (FrameLayout)findViewById(R.id.takeaway);
             layout.setVisibility(View.VISIBLE);
-            getSupportFragmentManager().beginTransaction().add(R.id.takeaway, new Take_Away()).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.takeaway, new Take()).commit();
+
         }
     }
+
     }
 

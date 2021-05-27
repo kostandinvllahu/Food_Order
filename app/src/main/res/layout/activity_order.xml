@@ -95,14 +95,14 @@
         android:id="@+id/takeaway"
         android:layout_width="409dp"
         android:layout_height="238dp"
+        android:name="com.google.android.gms.maps.SupportTake"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.446">
+        app:layout_constraintVertical_bias="0.446"/>
 
-    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,7 +23,7 @@
         android:id="@+id/title2"
         android:layout_width="301dp"
         android:layout_height="44dp"
-        android:text="Delivery"
+        android:text="Take Away"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
