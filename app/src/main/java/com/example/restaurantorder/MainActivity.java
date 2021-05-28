@@ -33,13 +33,13 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     TextView fullName, email, phone;
-    TextView select, select2, select3, select4, select5, food1, food2, food3, food4, food5, total, number1, number2, number3, number4, number5, p1, p2, p3, p4, p5;
-    Button btnClear, btnOrder, btnSelect1, btnSelect2, btnSelect3, btnSelect4, btnSelect5;
+    TextView select, select2, select3, select4, select5, food1, food2, food3, food4, food5, total, number1, number2, number3, number4, number5, p1, p2, p3, p4, p5, temp;
+    Button btnClear, btnOrder, btnSelect1, btnSelect2, btnSelect3, btnSelect4, btnSelect5, btnCheckTotal;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    String userId, e, finalPrice;;
+    String userId, e, finalPrice, tempPrice;
     int a, b, c, a1, b1, c1, a2, b2, c2, a3, b3, c3, a4, b4, c4, finalP;
-    Boolean check = false, clean=false, redirect = false;
+    Boolean check = false, clean=false, redirect = false, price=false;
     Timer timer;
     @Override
 
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         // phone = findViewById(R.id.profilePhone);
         //fullName = findViewById(R.id.profileName);
         //email = findViewById(R.id.profileEmail);
+        temp = findViewById(R.id.tempTotal);
         total = findViewById(R.id.selectcb1);
         select = findViewById(R.id.selectcb);
         select2 = findViewById(R.id.selectcb2);
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         btnSelect3 = (Button) findViewById(R.id.checkBox3);
         btnSelect4 = (Button) findViewById(R.id.checkBox4);
         btnSelect5 = (Button) findViewById(R.id.checkBox5);
+        btnCheckTotal = (Button) findViewById(R.id.logout3);
         CheckBox cb1 = (CheckBox) findViewById(R.id.checkBox1);
         CheckBox cb2 = (CheckBox) findViewById(R.id.checkBox2);
         CheckBox cb3 = (CheckBox) findViewById(R.id.checkBox3);
@@ -97,6 +99,68 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
+
+        btnCheckTotal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                price = true;
+                temp.setVisibility(View.VISIBLE);
+                if (cb1.isChecked()) {
+                    a = Integer.parseInt(p1.getText().toString());
+                    b = Integer.parseInt(number1.getText().toString());
+                    c = a * b;
+                    e = String.valueOf(c);
+                    p1.setText(e);
+                }
+
+                //CheckBox2
+                if (cb2.isChecked()) {
+                    a1 = Integer.parseInt(p2.getText().toString());
+                    b1 = Integer.parseInt(number2.getText().toString());
+                    c1 = a1 * b1;
+                    e = String.valueOf(c1);
+                    p2.setText(e);
+                }
+                //CheckBox3
+                if (cb3.isChecked()) {
+                    a2 = Integer.parseInt(p3.getText().toString());
+                    b2 = Integer.parseInt(number3.getText().toString());
+                    c2 = a2 * b2;
+                    e = String.valueOf(c2);
+                    p3.setText(e);
+                }
+
+                //CheckBox4
+                if (cb4.isChecked()) {
+                    a3 = Integer.parseInt(p4.getText().toString());
+                    b3 = Integer.parseInt(number4.getText().toString());
+                    c3 = a3 * b3;
+                    e = String.valueOf(c3);
+                    p4.setText(e);
+                }
+
+                //CheckBox5
+                if (cb5.isChecked()) {
+                    a4 = Integer.parseInt(p5.getText().toString());
+                    b4 = Integer.parseInt(number5.getText().toString());
+                    c4 = a4 * b4;
+                    e = String.valueOf(c4);
+                    p5.setText(e);
+                }
+                if (price == true) {
+                    finalP = c + c1 + c2 + c3 + c4;
+                    tempPrice = String.valueOf(finalP);
+                    temp.setText(tempPrice);
+                }else{
+                    if(price == false){
+                        tempPrice = "";
+                        temp.setText(tempPrice);
+                    }
+                }
+
+            }
+        });
 
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,6 +201,12 @@ public class MainActivity extends AppCompatActivity {
                 p5.setText("");
                 total.setText("");
                 check = false;
+                price = false;
+                if(price==false){
+                    temp.setVisibility(View.INVISIBLE);
+                    tempPrice = "";
+                    temp.setText(tempPrice);
+                }
             }
         });
 

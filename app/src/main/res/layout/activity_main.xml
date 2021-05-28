@@ -493,7 +493,6 @@
         android:layout_width="122dp"
         android:layout_height="33dp"
         android:shadowColor="@color/black"
-        android:text="Speca te mbushura"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.573"
