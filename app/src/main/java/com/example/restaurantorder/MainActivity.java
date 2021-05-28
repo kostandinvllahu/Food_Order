@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         btnCheckTotal.setOnClickListener(new View.OnClickListener() {
+            // BEJ NJE STATEMENT NESE ASNJE CHECKBOX NUK ESHTE SELECT TREGON ERROR
             @Override
             public void onClick(View view) {
 
@@ -152,13 +153,7 @@ public class MainActivity extends AppCompatActivity {
                     finalP = c + c1 + c2 + c3 + c4;
                     tempPrice = String.valueOf(finalP);
                     temp.setText(tempPrice);
-                }else{
-                    if(price == false){
-                        tempPrice = "";
-                        temp.setText(tempPrice);
-                    }
                 }
-
             }
         });
 
@@ -203,9 +198,15 @@ public class MainActivity extends AppCompatActivity {
                 check = false;
                 price = false;
                 if(price==false){
-                    temp.setVisibility(View.INVISIBLE);
-                    tempPrice = "";
+                    c = 0;
+                    c1 = 0;
+                    c2 = 0;
+                    c3 = 0;
+                    c4 = 0;
+                    finalP = c + c1 + c2 + c3 + c4;
+                    tempPrice = String.valueOf(finalP);
                     temp.setText(tempPrice);
+                    temp.setVisibility(View.INVISIBLE);
                 }
             }
         });
