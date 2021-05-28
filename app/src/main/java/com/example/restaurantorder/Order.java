@@ -50,7 +50,7 @@ public class Order extends AppCompatActivity {
             layoutOne.setVisibility(View.INVISIBLE);
             FrameLayout layout = (FrameLayout)findViewById(R.id.takeaway);
             layout.setVisibility(View.VISIBLE);
-            getSupportFragmentManager().beginTransaction().add(R.id.takeaway, new Take()).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.takeaway, new MapFragment()).commit();
 
         }
     }
